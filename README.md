@@ -1,91 +1,157 @@
 # Reliance Digital Customer Support Agent
 
-University project — Phase 1 (backend only).
+A simple, working web application that turns an existing Microsoft Foundry
+AI agent into a polished customer support chat experience for Reliance
+Digital — built as a university project.
 
-This backend is a thin FastAPI wrapper around an **existing** Microsoft
-Azure AI Foundry agent called **Customer-Support-Agent**. The agent already
-has its instructions, File Search tool, and Reliance Digital knowledge base
-configured in the Foundry portal — this code simply relays user messages to
-it and returns the responses.
+## Overview
 
-## Project structure
+This project is **not** a new AI system. It is a thin, focused bridge
+between a working Foundry agent and a clean chat interface:
 
 ```
-backend/
-    main.py            # FastAPI app — /api/chat and /api/health
-    foundry.py         # Foundry SDK wrapper (AIProjectClient + Responses API)
-    requirements.txt   # Python dependencies
-    .env.example       # Environment variable template
+User → Frontend (HTML/CSS/JS) → FastAPI Backend → Existing Foundry Agent
+       ↑                                                    ↓
+       └──────────────────── Response ─────────────────────┘
 ```
 
-## Quick start
+The existing Foundry agent (`Customer-Support-Agent`, model `gpt-5-mini`,
+inside the `Universal-Customer-Support-Agent` project) already has its own
+instructions, File Search, and real Reliance Digital policy documents
+(return, warranty, cancellation, delivery) attached. This project does not
+recreate, replace, or duplicate any of that — it only calls it.
 
-### 1. Prerequisites
+## Features
 
-* Python 3.10+
-* An Azure AI Foundry project with the **Customer-Support-Agent** agent
-  already deployed and working in the Foundry Playground.
-* Azure CLI logged in (`az login`) **or** a service principal configured.
+- Chat interface with Reliance Digital branding
+- Real-time responses grounded in real Reliance Digital policy documents
+  via the agent's existing File Search
+- Suggested question tiles for common queries (returns, warranty,
+  cancellation, delivery)
+- Loading indicator while waiting for a response
+- Inline error handling with a retry option
+- Multi-turn conversation memory (via conversation_id passed to the agent)
+- "Clear conversation" to reset the chat
+- Chat persistence — the current conversation survives a page refresh
+  (stored in browser localStorage; not synced across devices)
+- Responsive layout for desktop and mobile
 
-### 2. Setup
+## Tech Stack
+
+- **Frontend:** Plain HTML, CSS, and vanilla JavaScript (no framework, no
+  build step)
+- **Backend:** Python, FastAPI
+- **AI:** Microsoft Foundry Agent Service (existing agent, `gpt-5-mini`,
+  called via `azure-ai-projects` v2.x using the Responses API)
+- **Auth:** Azure `DefaultAzureCredential` (Azure CLI login for local
+  development — no API keys used or stored)
+
+## Project Structure
+
+```
+Customer_Support_Agent/
+    backend/
+        main.py            # FastAPI app: /api/chat, /api/health
+        foundry.py         # Connects to the existing Foundry agent
+        requirements.txt
+        .env.example
+    frontend/
+        index.html
+        style.css
+        app.js
+    README.md
+```
+
+## Prerequisites
+
+- Python 3.10+
+- An Azure account with access to the `Universal-Customer-Support-Agent`
+  Foundry project (Azure AI Developer/User role)
+- Azure CLI installed, and logged in via `az login`
+
+## Setup
+
+### 1. Backend
 
 ```bash
 cd backend
-
-# Create and activate a virtual environment
 python -m venv .venv
 .venv\Scripts\activate        # Windows
-# source .venv/bin/activate   # Linux/macOS
-
-# Install dependencies
+# source .venv/bin/activate   # macOS/Linux
 pip install -r requirements.txt
-
-# Configure environment
-copy .env.example .env        # Windows
-# cp .env.example .env        # Linux/macOS
-# Edit .env and fill in AZURE_AI_PROJECT_ENDPOINT
 ```
 
-### 3. Run
+Copy `.env.example` to `.env` and fill in your Foundry project details:
+
+```
+AZURE_AI_PROJECT_ENDPOINT=<your Foundry project endpoint>
+FOUNDRY_AGENT_NAME=Customer-Support-Agent
+FOUNDRY_MODEL_DEPLOYMENT_NAME=gpt-5-mini
+```
+
+Run the backend:
 
 ```bash
-uvicorn main:app --reload --port 8000
+uvicorn main:app --reload --port 8080
 ```
 
-### 4. Test
+Verify it's working by opening `http://localhost:8080/docs` and testing
+`/api/health`.
 
-```bash
-# Health check
-curl http://localhost:8000/api/health
+### 2. Frontend
 
-# First message
-curl -X POST http://localhost:8000/api/chat \
-  -H "Content-Type: application/json" \
-  -d "{\"message\": \"What is the return policy?\"}"
+The frontend is plain static files — no build step required.
 
-# Follow-up (use the conversation_id from the response above)
-curl -X POST http://localhost:8000/api/chat \
-  -H "Content-Type: application/json" \
-  -d "{\"message\": \"What about electronics specifically?\", \"conversation_id\": \"<id>\"}"
+- Open `frontend/index.html` with a static file server (e.g. the "Go Live"
+  extension in your editor, or any simple local static server)
+- Make sure the base URL in `app.js` matches the port your backend is
+  actually running on (default: `8080`)
+
+Open the served URL in a browser. The backend must be running for the chat
+to work.
+
+## Environment Variables
+
+| Variable | Description |
+|---|---|
+| `AZURE_AI_PROJECT_ENDPOINT` | Endpoint URL of the Foundry project |
+| `FOUNDRY_AGENT_NAME` | Name of the existing agent (`Customer-Support-Agent`) |
+| `FOUNDRY_MODEL_DEPLOYMENT_NAME` | Model deployment name (`gpt-5-mini`) |
+
+No API keys are used. Authentication is handled via Azure
+`DefaultAzureCredential`, which uses your local `az login` session in
+development.
+
+## API
+
+### `GET /api/health`
+Confirms the backend can reach the Foundry project and see the agent.
+
+### `POST /api/chat`
+```json
+{
+  "message": "What is the return policy?",
+  "conversation_id": null
+}
 ```
-
-## Auth
-
-By default the backend uses `DefaultAzureCredential`, which tries (in
-order): environment variables, managed identity, Azure CLI, etc.
-
-For local development the easiest option is:
-
-```bash
-az login
+Returns:
+```json
+{
+  "reply": "...",
+  "conversation_id": "..."
+}
 ```
+Pass the returned `conversation_id` on subsequent calls to continue the
+same conversation.
 
-For CI/deployment, set `AZURE_TENANT_ID`, `AZURE_CLIENT_ID`, and
-`AZURE_CLIENT_SECRET` as environment variables.
+## Notes
 
-## What this is NOT
-
-* No frontend yet (Phase 2).
-* No custom tools (order lookup, etc.) yet.
-* No web search fallback yet.
-* No database, auth system, or admin dashboard.
+- All policy answers come from real Reliance Digital documents already
+  attached to the Foundry agent's File Search — no fake or placeholder
+  policy data is used.
+- The agent is designed to say when it cannot verify an answer rather than
+  inventing a policy.
+- This project intentionally does not include: authentication, a customer
+  account system, an admin dashboard, ticket management, payment
+  integration, or a database — kept simple by design for the scope of this
+  project.

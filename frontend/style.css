@@ -672,24 +672,6 @@ body {
   gap: var(--space-sm);
 }
 
-.input-icon-btn {
-  color: var(--on-surface-variant);
-  background: transparent;
-  border: none;
-  padding: var(--space-sm);
-  border-radius: 9999px;
-  cursor: pointer;
-  transition: all 0.15s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.input-icon-btn:hover {
-  color: var(--primary);
-  background: var(--surface-container);
-}
 
 .input-field {
   flex: 1;
@@ -989,10 +971,6 @@ body {
     padding: var(--space-sm);
   }
 
-  /* Hide decorative input icons to save horizontal space */
-  .input-icon-btn {
-    display: none;
-  }
 
   /* Message bubbles can be wider on small screens */
   .msg-agent,
