@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reliance Digital Customer Support</title>
+  <meta name="description" content="Reliance Digital resQ Customer Support Agent — returns, warranty, delivery, and more." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="app-header">
+    <div class="app-header-inner">
+      <div class="header-left">
+        <div class="brand">
+          <span class="material-symbols-outlined brand-icon">support_agent</span>
+          <span class="text-headline-sm brand-name">resQ Support</span>
+        </div>
+        <div class="header-phone text-label-sm">
+          <span class="material-symbols-outlined" style="font-size: 16px;">call</span>
+          <span>1800 889 1055</span>
+        </div>
+      </div>
+      <nav class="header-nav">
+        <a href="#">Live Chat</a>
+      </nav>
+      <div>
+        <div class="header-avatar">
+          <span class="material-symbols-outlined" style="font-size: 18px;">person</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="app-main">
+    <div class="app-main-inner">
+      <section class="chat-card">
+        
+        <!-- Chat Header -->
+        <div class="chat-header">
+          <div class="chat-header-left">
+            <img class="chat-header-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Reliance_Digital_logo.svg/512px-Reliance_Digital_logo.svg.png" alt="Reliance Digital" onerror="this.style.display='none'" />
+            <div class="status-badge">
+              <span class="status-dot"></span>
+              <span class="text-label-sm" style="font-weight: 700; text-transform: uppercase; color: var(--on-surface-variant);">resQ Live Assured</span>
+            </div>
+          </div>
+          <button id="clear-btn" class="clear-btn" title="Clear conversation">
+            <span class="material-symbols-outlined" style="font-size: 20px;">refresh</span>
+            <span class="text-label-sm" style="font-weight: 600;">Clear</span>
+          </button>
+        </div>
+
+        <!-- Chat Messages Area -->
+        <div class="chat-messages" id="chat-messages-container">
+          <div class="date-stamp">
+            <span class="date-stamp-pill text-label-sm">Today • Official Service Support</span>
+          </div>
+
+          <!-- Empty State -->
+          <div id="empty-state" class="empty-state animate-fade-in">
+            <div class="empty-greeting">
+              <div class="empty-greeting-label">
+                <span class="material-symbols-outlined" style="font-size: 24px;">waving_hand</span>
+                <span class="text-label-md" style="text-transform: uppercase; font-weight: 700; letter-spacing: 0.04em;">Customer Experience Desk</span>
+              </div>
+              <h2 class="text-headline-md">Namaste! How can we assist you today?</h2>
+              <p class="text-body-md">Choose a frequent inquiry below or type your query regarding Reliance Digital deliveries, store pickups, repairs, and refunds.</p>
+            </div>
+            <div class="suggestions-grid">
+              <button class="suggestion-card" data-query="How can I return a product?">
+                <div class="suggestion-icon"><span class="material-symbols-outlined" style="font-size: 20px;">assignment_return</span></div>
+                <div>
+                  <span class="text-headline-sm suggestion-title">How can I return a product?</span>
+                  <span class="text-body-sm suggestion-desc">7-day replacement & doorstep inspection policy</span>
+                </div>
+              </button>
+              <button class="suggestion-card" data-query="What is the warranty policy?">
+                <div class="suggestion-icon"><span class="material-symbols-outlined" style="font-size: 20px;">verified_user</span></div>
+                <div>
+                  <span class="text-headline-sm suggestion-title">What is the warranty policy?</span>
+                  <span class="text-body-sm suggestion-desc">resQ Care plans, manufacturer terms & claims</span>
+                </div>
+              </button>
+              <button class="suggestion-card" data-query="What is the cancellation policy?">
+                <div class="suggestion-icon"><span class="material-symbols-outlined" style="font-size: 20px;">cancel</span></div>
+                <div>
+                  <span class="text-headline-sm suggestion-title">What is the cancellation policy?</span>
+                  <span class="text-body-sm suggestion-desc">Instant refunds to payment source before dispatch</span>
+                </div>
+              </button>
+              <button class="suggestion-card" data-query="How long does delivery take?">
+                <div class="suggestion-icon"><span class="material-symbols-outlined" style="font-size: 20px;">local_shipping</span></div>
+                <div>
+                  <span class="text-headline-sm suggestion-title">How long does delivery take?</span>
+                  <span class="text-body-sm suggestion-desc">Express same-day and 2-day delivery guidelines</span>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Dynamic Chat Content Will Go Here -->
+          
+          <!-- Loading State (Hidden by default) -->
+          <div id="loading-indicator" class="typing-indicator animate-fade-in hidden">
+            <div class="agent-avatar">
+              <span class="material-symbols-outlined" style="font-size: 18px;">support_agent</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+              <div class="typing-dots">
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+              </div>
+              <span class="text-label-sm typing-label">Agent is typing a verified response...</span>
+            </div>
+          </div>
+
+          <!-- Error State (Hidden by default) -->
+          <div id="error-state" class="error-inline animate-fade-in hidden">
+            <div class="error-content">
+              <span class="material-symbols-outlined error-icon">error_outline</span>
+              <div>
+                <span class="text-headline-sm error-title">Unable to get a response</span>
+                <span id="error-desc" class="text-body-sm error-desc">Our service experienced a temporary issue. Please try again.</span>
+              </div>
+            </div>
+            <button id="retry-btn" class="retry-btn text-label-md">
+              <span class="material-symbols-outlined" style="font-size: 18px;">cached</span>
+              <span>Try again</span>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Input Area -->
+        <div class="input-dock">
+          <form id="chat-form" class="input-form">
+            <button type="button" class="input-icon-btn" title="Attach invoice or image">
+              <span class="material-symbols-outlined" style="font-size: 22px;">attach_file</span>
+            </button>
+            <button type="button" class="input-icon-btn" title="Voice assistance">
+              <span class="material-symbols-outlined" style="font-size: 22px;">mic</span>
+            </button>
+            <input type="text" id="chat-input" class="input-field text-body-md" placeholder="Ask about orders, returns, warranty, resQ plans..." autocomplete="off" />
+            <button type="submit" id="send-btn" class="send-btn" title="Send message" disabled>
+              <span class="material-symbols-outlined" style="font-size: 20px;">send</span>
+            </button>
+          </form>
+          <div class="input-footer text-label-sm">
+            <span>Protected by Reliance Retail Secured Guarantee</span>
+            <span class="enter-hint">Press Enter to send</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom Feature Cards -->
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon primary">
+            <span class="material-symbols-outlined" style="font-size: 22px;">verified</span>
+          </div>
+          <div>
+            <h3 class="text-headline-sm">resQ Authorized Engineers</h3>
+            <p class="text-body-sm">ISO 9001:2015 certified customer engineers for doorstep hardware installation.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon secondary">
+            <span class="material-symbols-outlined" style="font-size: 22px;">schedule</span>
+          </div>
+          <div>
+            <h3 class="text-headline-sm">Live Status Synchronization</h3>
+            <p class="text-body-sm">Real-time GPS telematics linked with 550+ Reliance Digital physical service hubs.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon tertiary">
+            <span class="material-symbols-outlined" style="font-size: 22px;">security</span>
+          </div>
+          <div>
+            <h3 class="text-headline-sm">100% Genuine Parts</h3>
+            <p class="text-body-sm">Direct OEM brand inventory backed with digital proof-of-work receipts.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="app-footer-inner text-body-sm">
+      <span>© 2026 Reliance Retail Ltd. Authorized resQ Service & Support.</span>
+      <div class="footer-status">
+        <span class="status-dot"></span>
+        <span>All systems operational</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
