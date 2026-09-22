@@ -194,12 +194,10 @@ body {
 
 .app-header-inner {
   height: 56px;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 var(--space-lg);
-  display: flex;
+  padding: 0 var(--space-xl);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
 }
 
 .header-left {
@@ -207,6 +205,7 @@ body {
   align-items: center;
   gap: var(--space-md);
   min-width: 0; /* allow shrinking */
+  justify-self: start;
 }
 
 .brand {
@@ -237,6 +236,10 @@ body {
   white-space: nowrap;
 }
 
+.header-nav {
+  justify-self: center;
+}
+
 .header-nav a {
   padding: 16px 0;
   text-decoration: none;
@@ -257,6 +260,11 @@ body {
   justify-content: center;
   color: var(--on-primary);
   flex-shrink: 0;
+}
+
+/* Right-align the avatar wrapper (3rd grid column) */
+.app-header-inner > :last-child {
+  justify-self: end;
 }
 
 /* ── Main content ───────────────────────────────────────── */
@@ -807,9 +815,7 @@ body {
 }
 
 .app-footer-inner {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 var(--space-lg);
+  padding: 0 var(--space-xl);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -853,6 +859,10 @@ body {
    ══════════════════════════════════════════════════════════ */
 @media (max-width: 640px) {
   .app-header-inner {
+    padding: 0 var(--space-md);
+  }
+
+  .app-footer-inner {
     padding: 0 var(--space-md);
   }
 
@@ -907,7 +917,6 @@ body {
     flex-direction: column;
     gap: var(--space-sm);
     text-align: center;
-    padding: 0 var(--space-md);
   }
 
   /* Scale down empty greeting padding */
@@ -929,6 +938,10 @@ body {
   /* Smaller header */
   .app-header-inner {
     height: 48px;
+    padding: 0 var(--space-sm);
+  }
+
+  .app-footer-inner {
     padding: 0 var(--space-sm);
   }
 
