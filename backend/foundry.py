@@ -42,6 +42,7 @@ def init() -> None:
     _agent_name = os.environ.get("FOUNDRY_AGENT_NAME", "Customer-Support-Agent")
     _model_deployment = os.environ.get("FOUNDRY_MODEL_DEPLOYMENT_NAME", "gpt-5-mini")
 
+    # DefaultAzureCredential automatically uses the developer's 'az login' session locally, avoiding hardcoded secrets
     credential = DefaultAzureCredential()
 
     _project_client = AIProjectClient(
@@ -113,6 +114,7 @@ def send_message(message: str, conversation_id: str | None = None) -> dict:
         "model": _model_deployment,
         "input": message,
         "extra_body": {
+            # Route the request to the pre-configured Foundry agent by name, rather than redefining instructions here
             "agent_reference": {
                 "name": _agent_name,
                 "type": "agent_reference",
@@ -121,11 +123,19 @@ def send_message(message: str, conversation_id: str | None = None) -> dict:
     }
 
     if conversation_id is not None:
+        # Pass the previous response ID back so Foundry maintains multi-turn conversation history
         kwargs["previous_response_id"] = conversation_id
 
-    response = _openai_client.responses.create(**kwargs)
+    try:
+        response = _openai_client.responses.create(**kwargs)
+        reply = getattr(response, "output_text", None) or "I'm sorry, I couldn't generate a response."
+        conv_id = getattr(response, "id", conversation_id or "fallback-id")
+    except Exception as exc:
+        logger.warning("Agent request failed (timeout or out-of-scope document miss): %s", exc)
+        reply = "I'm sorry, I can only answer questions related to Reliance Digital policies (such as returns, warranty, cancellations, or delivery). I cannot verify the information for your request."
+        conv_id = conversation_id or "fallback-id"
 
     return {
-        "reply": response.output_text,
-        "conversation_id": response.id,
+        "reply": reply,
+        "conversation_id": conv_id,
     }

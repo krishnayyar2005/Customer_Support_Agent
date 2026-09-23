@@ -55,6 +55,7 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
+    # Allow all origins for local development since there are no sensitive session cookies involved
     allow_origins=["*"],
     allow_credentials=False,
     allow_methods=["*"],

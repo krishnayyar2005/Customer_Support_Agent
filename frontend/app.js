@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://localhost:8080";
+const API_BASE_URL = "http://localhost:8000";
 
 document.addEventListener('DOMContentLoaded', () => {
   // DOM Elements
@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── localStorage helpers ──────────────────────────────────────
   const saveChatState = () => {
+    // Persist state locally so the user's conversation survives an accidental page refresh
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({
         conversationId,
@@ -90,28 +91,28 @@ document.addEventListener('DOMContentLoaded', () => {
     let html;
     if (role === 'user') {
       html = `
-        <div class="msg-user animate-fade-in">
-          <div style="display: flex; flexDirection: column; align-items: flex-end; gap: 4px;">
-            <div class="user-bubble">
-              <p class="text-body-md" style="color: var(--on-tertiary);">${escapeHtml(text)}</p>
+        <div class="msg-user flex items-end justify-end gap-space-sm self-end max-w-[85%] animate-fade-in">
+          <div class="flex flex-col items-end gap-1">
+            <div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-space-md rounded-2xl rounded-br-sm shadow-[0_4px_14px_rgba(79,70,229,0.3)]">
+              <p class="font-body-md text-body-md text-white whitespace-pre-wrap">${escapeHtml(text)}</p>
             </div>
-            <div class="msg-meta-user">
-              <span class="text-label-sm" style="color: var(--on-surface-variant);">${time}</span>
-              <span class="material-symbols-outlined" style="font-size: 14px; color: var(--secondary);">done_all</span>
+            <div class="flex items-center gap-1 mr-1">
+              <span class="font-label-sm text-label-sm text-slate-500">${time}</span>
+              <span class="material-symbols-outlined text-indigo-500 text-[14px]">done_all</span>
             </div>
           </div>
         </div>`;
     } else {
       html = `
-        <div class="msg-agent animate-fade-in">
-          <div class="agent-avatar">
-            <span class="material-symbols-outlined" style="font-size: 18px;">support_agent</span>
+        <div class="msg-agent flex items-start gap-space-sm max-w-[90%] animate-fade-in">
+          <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex items-center justify-center shrink-0 shadow-sm">
+            <span class="material-symbols-outlined text-[18px]">support_agent</span>
           </div>
-          <div style="display: flex; flex-direction: column; gap: 4px;">
-            <div class="agent-bubble">
-              <p class="text-body-md" style="white-space: pre-wrap;">${escapeHtml(text)}</p>
+          <div class="flex flex-col gap-1 w-full">
+            <div class="glass-card text-slate-800 p-space-md rounded-2xl rounded-bl-sm shadow-sm flex flex-col gap-space-md">
+              <p class="font-body-md text-body-md leading-relaxed whitespace-pre-wrap">${escapeHtml(text)}</p>
             </div>
-            <span class="text-label-sm msg-meta">${time} • resQ Virtual Specialist</span>
+            <span class="font-label-sm text-label-sm text-slate-500 ml-1">${time} &bull; resQ Virtual Specialist</span>
           </div>
         </div>`;
     }
@@ -161,6 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const response = await fetch(`${API_BASE_URL}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        // Pass conversationId to the backend so the Foundry agent knows this is a continuation of the same chat
         body: JSON.stringify({ message: text, conversation_id: conversationId })
       });
 
@@ -169,6 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const data = await response.json();
+      // Save the returned ID for the next turn to keep multi-turn context intact
       conversationId = data.conversation_id;
       
       loadingIndicator.classList.add('hidden');
