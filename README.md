@@ -6,7 +6,7 @@ An AI-powered customer support assistant for Reliance Digital that answers custo
 
 | Name           | Student ID |
 | -------------- | ---------: |
-| Krrish Nayyar  | 2410992947 |
+| Krish Nayyar  | 2410992947 |
 | Ramandeep      | 2410993373 |
 | Mridul Chauhan | 2410993161 |
 | Kunal Yadav    | 2410993051 |
