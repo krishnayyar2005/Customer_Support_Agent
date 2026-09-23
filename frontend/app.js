@@ -7,13 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const sendBtn = document.getElementById('send-btn');
   const clearBtn = document.getElementById('clear-btn');
   const chatMessagesContainer = document.getElementById('chat-messages-container');
-  
+
   const emptyState = document.getElementById('empty-state');
   const loadingIndicator = document.getElementById('loading-indicator');
   const errorState = document.getElementById('error-state');
   const errorDesc = document.getElementById('error-desc');
   const retryBtn = document.getElementById('retry-btn');
-  
+
   const suggestionCards = document.querySelectorAll('.suggestion-card');
 
   // State
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const clearChatState = () => {
-    try { localStorage.removeItem(STORAGE_KEY); } catch (_) {}
+    try { localStorage.removeItem(STORAGE_KEY); } catch (_) { }
   };
 
   const restoreChatState = () => {
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Helpers
   const formatTime = () => new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  
+
   const scrollToBottom = () => {
     chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
   };
@@ -137,22 +137,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const escapeHtml = (unsafe) => {
     return unsafe
-         .replace(/&/g, "&amp;")
-         .replace(/</g, "&lt;")
-         .replace(/>/g, "&gt;")
-         .replace(/"/g, "&quot;")
-         .replace(/'/g, "&#039;");
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
   };
 
   // Actions
   const sendMessage = async (text) => {
     if (!text || isLoading) return;
     isLoading = true;
-    
+
     hideEmptyState();
     errorState.classList.add('hidden');
     renderUserMessage(text);
-    
+
     chatInput.value = '';
     setInputState(true);
     loadingIndicator.classList.remove('hidden');
@@ -173,11 +173,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const data = await response.json();
       // Save the returned ID for the next turn to keep multi-turn context intact
       conversationId = data.conversation_id;
-      
+
       loadingIndicator.classList.add('hidden');
       renderAgentMessage(data.reply);
       lastFailedMessage = null;
-      
+
     } catch (err) {
       loadingIndicator.classList.add('hidden');
       errorDesc.textContent = "Our service experienced a temporary issue. Please try again.";
@@ -221,13 +221,13 @@ document.addEventListener('DOMContentLoaded', () => {
     messages = [];
     clearChatState();
     setInputState(false);
-    
+
     // Reset UI
     chatInput.value = '';
     errorState.classList.add('hidden');
     loadingIndicator.classList.add('hidden');
     emptyState.classList.remove('hidden');
-    
+
     // Remove all dynamically added messages
     const bubbles = chatMessagesContainer.querySelectorAll('.msg-user, .msg-agent');
     bubbles.forEach(bubble => bubble.remove());

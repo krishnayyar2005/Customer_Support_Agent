@@ -37,8 +37,9 @@ logger = logging.getLogger(__name__)
 
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
+    import os
     foundry.init()
-    logger.info("Foundry client ready.")
+    logger.info("Foundry client ready. FOUNDRY_MODEL_DEPLOYMENT_NAME: %s", os.environ.get("FOUNDRY_MODEL_DEPLOYMENT_NAME"))
     yield
     logger.info("Shutting down.")
 

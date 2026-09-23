@@ -131,8 +131,8 @@ def send_message(message: str, conversation_id: str | None = None) -> dict:
         reply = getattr(response, "output_text", None) or "I'm sorry, I couldn't generate a response."
         conv_id = getattr(response, "id", conversation_id or "fallback-id")
     except Exception as exc:
-        logger.warning("Agent request failed (timeout or out-of-scope document miss): %s", exc)
-        reply = "I'm sorry, I can only answer questions related to Reliance Digital policies (such as returns, warranty, cancellations, or delivery). I cannot verify the information for your request."
+        logger.error("FOUNDRY CALL FAILED: %s: %s", type(exc).__name__, str(exc), exc_info=True)
+        reply = f"[DEBUG] {type(exc).__name__}: {str(exc)}"
         conv_id = conversation_id or "fallback-id"
 
     return {
