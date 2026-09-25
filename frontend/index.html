@@ -1,225 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <meta content="web_standard" name="shell-type"/>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <title>Reliance Digital Support</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&family=Work+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <script id="tailwind-config">
-    tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e2e8f0","on-secondary":"#ffffff","background":"#f8fafc","tertiary":"#4f46e5","secondary-fixed":"#e0f2fe","surface-tint":"#2563eb","surface-dim":"#cbd5e1","surface-bright":"#ffffff","surface-container-low":"rgba(255,255,255,0.5)","primary-fixed":"#dbeafe","on-primary-container":"#ffffff","on-error-container":"#991b1b","on-tertiary":"#ffffff","on-tertiary-container":"#f8fafc","on-secondary-fixed-variant":"#0369a1","surface-container":"rgba(255,255,255,0.6)","on-error":"#ffffff","error":"#ef4444","primary-container":"#2563eb","on-primary":"#ffffff","inverse-primary":"#93c5fd","on-background":"#0f172a","tertiary-container":"#6366f1","secondary-fixed-dim":"#bae6fd","secondary":"#0284c7","on-surface":"#0f172a","on-secondary-container":"#075985","tertiary-fixed-dim":"#c7d2fe","secondary-container":"#38bdf8","surface-container-highest":"#f1f5f9","outline":"#94a3b8","surface":"#ffffff","on-tertiary-fixed":"#1e1b4b","on-primary-fixed":"#172554","on-tertiary-fixed-variant":"#3730a3","inverse-on-surface":"#f8fafc","primary-fixed-dim":"#bfdbfe","outline-variant":"#cbd5e1","surface-container-lowest":"#ffffff","on-primary-fixed-variant":"#1e40af","error-container":"#fee2e2","tertiary-fixed":"#e0e7ff","surface-container-high":"rgba(255,255,255,0.7)","inverse-surface":"#1e293b","primary":"#2563eb","on-surface-variant":"#64748b","on-secondary-fixed":"#082f49"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{gutter:"1rem","space-xl":"2rem","gutter-desktop":"1.5rem","margin-desktop":"2rem","space-xs":"0.25rem","space-md":"1rem","space-lg":"1.5rem",margin:"1.5rem","space-sm":"0.5rem"},fontFamily:{"display-lg":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"label-lg":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"]},fontSize:{"display-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.02em",fontWeight:"700"}],"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}],"body-lg":["16px",{lineHeight:"24px",fontWeight:"400"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.03em",fontWeight:"700"}],"body-sm":["12px",{lineHeight:"16px",fontWeight:"400"}],"headline-lg":["24px",{lineHeight:"32px",letterSpacing:"-0.01em",fontWeight:"700"}],"headline-md":["20px",{lineHeight:"28px",fontWeight:"600"}],"label-lg":["14px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"600"}],"headline-sm":["16px",{lineHeight:"24px",fontWeight:"600"}]}}}};</script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#bd0015",
+            "primary-container": "#e42529",
+            "primary-fixed": "#ffdad6",
+            "on-primary": "#ffffff",
+            "surface-bg": "#F8FAFC",
+            "surface-panel": "#FFFFFF",
+            "surface-subtle": "#F1F5F9",
+            "on-surface": "#0d1c2e",
+            "secondary": "#565e74",
+            "border-crisp": "#E2E8F0",
+            "status-success": "#16A34A"
+          },
+          fontFamily: { "sans": ["Work Sans", "sans-serif"] }
+        }
+      }
+    };
+  </script>
 </head>
-<body class="aurora-bg min-h-screen font-body-md text-slate-800 antialiased selection:bg-indigo-100 selection:text-indigo-900">
-  <header class="fixed top-0 left-0 right-0 z-50 glass-header shadow-[0_4px_20px_-4px_rgba(0,0,0,0.04)]">
-    <div class="h-14 w-full px-6 sm:px-10 grid grid-cols-[1fr_auto_1fr] items-center">
-      <div class="flex items-center gap-space-md justify-self-start">
-        <div class="flex items-center gap-space-xs">
-          <span class="material-symbols-outlined text-indigo-600 text-[22px]">support_agent</span>
-          <span class="font-headline-sm text-headline-sm font-bold tracking-tight text-slate-900">resQ Support</span>
-        </div>
-        <div class="hidden sm:flex items-center text-slate-500 font-label-sm text-label-sm border-l border-slate-300/60 pl-space-md gap-space-xs">
-          <span class="material-symbols-outlined text-[16px] text-indigo-500">call</span>
-          <span class="tracking-wide">1800 889 1055</span>
-        </div>
+
+<body class="bg-surface-bg font-sans text-on-surface min-h-screen antialiased">
+
+  <header class="fixed top-0 left-0 right-0 z-50 bg-surface-panel border-b border-border-crisp">
+    <div class="h-16 w-full max-w-4xl mx-auto px-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span class="material-symbols-outlined text-primary text-[26px]">support_agent</span>
+        <span class="font-semibold text-lg text-on-surface">Reliance Digital Support</span>
       </div>
-      <nav class="justify-self-center flex items-center">
-        <a aria-current="page" class="py-4 transition-all text-indigo-600 font-bold border-b-2 border-indigo-600" href="#">Live Chat</a>
-      </nav>
-      <div class="justify-self-end flex items-center gap-space-sm">
-        <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center shadow-sm shadow-indigo-500/20">
-          <span class="material-symbols-outlined text-white text-[18px]">person</span>
-        </div>
+      <div class="hidden sm:flex items-center gap-2 px-3 py-1 bg-surface-subtle border border-border-crisp rounded">
+        <span class="w-2 h-2 rounded-full bg-status-success animate-pulse"></span>
+        <span class="text-xs font-medium text-on-surface">Support Live</span>
       </div>
     </div>
   </header>
-  <main class="w-full pt-14">
-    <div class="max-w-3xl mx-auto px-gutter py-space-xl min-h-[calc(100vh-3.5rem-5rem)]">
-      <div class="flex flex-col w-full">
-        <section class="w-full glass-panel aurora-chat-shell rounded-2xl overflow-hidden flex flex-col">
-          <!-- Chat Header -->
-          <div class="px-space-lg py-space-md flex items-center justify-between border-b border-white/60 bg-white/40 backdrop-blur-md">
-            <div class="flex items-center gap-space-md">
-              <img alt="Reliance Digital Wordmark" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WYfuBrhgp7Y4Vpegtw49S8bYOVI5ZB7s9OK4JZXFBCI6ZuCCKuLCThqtLEEbri3l84FCGhwU-2PagAUs8aTxNVryE9TS7LKGJsvFUfZdYxFVemwkRSCrY6g9JTcjDWP0rwMRlbyhfSwF7myQpYwmUGbzzQR2mehiMT2S3EprldZiJ3_zh2qzRT_ZD0TZo6D3DZ0ajatcA34qwHQHAZbbt9xZUOhek-iqMoSxkTphKQPvcnRXCyWzQ2hIbb"/>
-              <div class="hidden sm:flex items-center gap-space-xs bg-white/70 px-space-sm py-1 rounded-full border border-white/80 shadow-[0_2px_6px_rgba(0,0,0,0.03)]">
-                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span class="font-label-sm text-label-sm text-slate-700 font-bold uppercase tracking-wider">resQ Live Assured</span>
-              </div>
-            </div>
-            <div class="flex items-center gap-space-xs">
-              <span class="hidden md:inline font-body-sm text-body-sm text-slate-500 font-medium">Ticket #RD-89421</span>
-              <button id="clear-btn" class="flex items-center gap-1 text-slate-600 hover:text-indigo-600 p-space-xs rounded-lg hover:bg-white/80 transition-colors" title="Clear conversation">
-                <span class="material-symbols-outlined text-[20px]">refresh</span>
-                <span class="font-label-sm text-label-sm font-semibold">Clear</span>
-              </button>
-            </div>
-          </div>
-          <!-- Active Conversation Viewport -->
-          <div class="bg-white/30 backdrop-blur-sm px-space-lg py-space-xl min-h-[460px] max-h-[580px] overflow-y-auto flex flex-col gap-space-lg" id="chat-messages-container">
-            <!-- System Date Stamp -->
-            <div class="flex justify-center my-space-sm">
-              <span class="bg-white/75 text-slate-600 font-label-sm text-label-sm px-space-md py-1 rounded-full uppercase tracking-wider border border-white/80 shadow-sm backdrop-blur-sm">
-                Today, 11:28 AM • Official Service Support
-              </span>
-            </div>
-            <!-- Empty State Prompts -->
-            <div class="flex flex-col gap-space-lg py-space-sm" id="empty-state">
-              <div class="glass-card p-space-xl rounded-[24px] shadow-sm">
-                <div class="flex items-center gap-space-sm text-indigo-600 mb-space-sm">
-                  <span class="material-symbols-outlined text-[24px]">waving_hand</span>
-                  <span class="font-label-md text-label-md uppercase font-bold tracking-wider">Customer Experience Desk</span>
-                </div>
-                <h2 class="font-headline-md text-headline-md text-slate-900 font-bold tracking-tight">Namaste! How can we assist you today?</h2>
-                <p class="font-body-md text-body-md text-slate-600 mt-1 leading-relaxed">
-                  Choose a frequent inquiry below or type your query regarding Reliance Digital deliveries, store pickups, repairs, and refunds.
-                </p>
-              </div>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
-                <button class="suggestion-card text-left glass-card p-space-lg rounded-[24px] shadow-sm hover:shadow-md hover:bg-white/95 transition-all flex items-start gap-space-md group" type="button" data-query="How can I return a product?">
-                  <div class="w-10 h-10 rounded-2xl bg-cyan-50 border border-cyan-100 flex items-center justify-center text-cyan-600 shrink-0 group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-indigo-600 group-hover:text-white transition-all shadow-sm">
-                    <span class="material-symbols-outlined text-[20px]">assignment_return</span>
-                  </div>
-                  <div>
-                    <span class="font-headline-sm text-headline-sm text-slate-900 block group-hover:text-indigo-600 transition-colors font-semibold">How can I return a product?</span>
-                    <span class="font-body-sm text-body-sm text-slate-500">7-day replacement &amp; doorstep inspection policy</span>
-                  </div>
-                </button>
-                <button class="suggestion-card text-left glass-card p-space-lg rounded-[24px] shadow-sm hover:shadow-md hover:bg-white/95 transition-all flex items-start gap-space-md group" type="button" data-query="What is the warranty policy?">
-                  <div class="w-10 h-10 rounded-2xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 shrink-0 group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-indigo-600 group-hover:text-white transition-all shadow-sm">
-                    <span class="material-symbols-outlined text-[20px]">verified_user</span>
-                  </div>
-                  <div>
-                    <span class="font-headline-sm text-headline-sm text-slate-900 block group-hover:text-indigo-600 transition-colors font-semibold">What is the warranty policy?</span>
-                    <span class="font-body-sm text-body-sm text-slate-500">resQ Care plans, manufacturer terms &amp; claims</span>
-                  </div>
-                </button>
-                <button class="suggestion-card text-left glass-card p-space-lg rounded-[24px] shadow-sm hover:shadow-md hover:bg-white/95 transition-all flex items-start gap-space-md group" type="button" data-query="What is the cancellation policy?">
-                  <div class="w-10 h-10 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 shrink-0 group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-indigo-600 group-hover:text-white transition-all shadow-sm">
-                    <span class="material-symbols-outlined text-[20px]">cancel</span>
-                  </div>
-                  <div>
-                    <span class="font-headline-sm text-headline-sm text-slate-900 block group-hover:text-indigo-600 transition-colors font-semibold">What is the cancellation policy?</span>
-                    <span class="font-body-sm text-body-sm text-slate-500">Instant refunds to payment source before dispatch</span>
-                  </div>
-                </button>
-                <button class="suggestion-card text-left glass-card p-space-lg rounded-[24px] shadow-sm hover:shadow-md hover:bg-white/95 transition-all flex items-start gap-space-md group" type="button" data-query="How long does delivery take?">
-                  <div class="w-10 h-10 rounded-2xl bg-sky-50 border border-sky-100 flex items-center justify-center text-sky-600 shrink-0 group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-indigo-600 group-hover:text-white transition-all shadow-sm">
-                    <span class="material-symbols-outlined text-[20px]">local_shipping</span>
-                  </div>
-                  <div>
-                    <span class="font-headline-sm text-headline-sm text-slate-900 block group-hover:text-indigo-600 transition-colors font-semibold">How long does delivery take?</span>
-                    <span class="font-body-sm text-body-sm text-slate-500">Express same-day and 2-day delivery guidelines</span>
-                  </div>
-                </button>
-              </div>
-            </div>
-            
-            <!-- Typing Indicator (Animated 3-dot pulse) -->
-            <div class="flex items-start gap-space-sm max-w-[80%] hidden" id="loading-indicator">
-              <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex items-center justify-center shrink-0 shadow-sm">
-                <span class="material-symbols-outlined text-[18px]">support_agent</span>
-              </div>
-              <div class="flex flex-col gap-1">
-                <div class="glass-card p-space-md rounded-2xl rounded-bl-sm shadow-sm flex items-center gap-1.5 w-20 justify-center h-10">
-                  <span class="w-2 h-2 rounded-full bg-indigo-500 animate-bounce"></span>
-                  <span class="w-2 h-2 rounded-full bg-indigo-500 animate-bounce" style="animation-delay: 0.15s;"></span>
-                  <span class="w-2 h-2 rounded-full bg-indigo-500 animate-bounce" style="animation-delay: 0.3s;"></span>
-                </div>
-                <span class="font-label-sm text-label-sm text-slate-500 ml-1">Agent is thinking...</span>
-              </div>
-            </div>
-            <!-- Inline Error State -->
-            <div class="w-full hidden" id="error-state">
-              <div class="bg-rose-50/90 border border-rose-200 text-rose-900 p-space-md rounded-2xl shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-sm backdrop-blur-md">
-                <div class="flex items-center gap-space-sm">
-                  <span class="material-symbols-outlined text-rose-600 text-[24px]">error_outline</span>
-                  <div>
-                    <span class="font-headline-sm text-headline-sm font-bold text-rose-700 block">Unable to retrieve response</span>
-                    <span class="font-body-sm text-body-sm text-slate-600" id="error-desc">Our service experienced a temporary issue. Please try again.</span>
-                  </div>
-                </div>
-                <button class="bg-rose-600 text-white px-space-md py-1.5 rounded-full font-label-md text-label-md font-bold hover:bg-rose-700 transition-colors flex items-center gap-1 shadow-sm shrink-0" id="retry-btn" type="button">
-                  <span class="material-symbols-outlined text-[18px]">cached</span>
-                  <span class="">Try again</span>
-                </button>
-              </div>
-            </div>
-          </div>
-          <!-- Quick Action Chips -->
-          <div class="bg-white/40 px-space-lg py-3.5 overflow-x-auto flex flex-wrap items-center gap-space-sm border-t border-white/60">
-            <span class="font-label-sm text-label-sm text-slate-500 uppercase font-bold shrink-0">Quick tags:</span>
-            <button class="suggestion-card quick-tag interactive-chip bg-white/80 hover:bg-indigo-600 hover:text-white text-indigo-700 font-label-sm text-label-sm px-space-sm py-1 rounded-full whitespace-nowrap shadow-sm border border-white hover:border-transparent" data-query="Check Delivery Partner">
-              Check Delivery Partner
-            </button>
-            <button class="suggestion-card quick-tag interactive-chip bg-white/80 hover:bg-indigo-600 hover:text-white text-indigo-700 font-label-sm text-label-sm px-space-sm py-1 rounded-full whitespace-nowrap shadow-sm border border-white hover:border-transparent" data-query="Book resQ Setup">
-              Book resQ Setup
-            </button>
-            <button class="suggestion-card quick-tag interactive-chip bg-white/80 hover:bg-indigo-600 hover:text-white text-indigo-700 font-label-sm text-label-sm px-space-sm py-1 rounded-full whitespace-nowrap shadow-sm border border-white hover:border-transparent" data-query="Download Tax Invoice">
-              Download Tax Invoice
-            </button>
-            <button class="suggestion-card quick-tag interactive-chip bg-white/80 hover:bg-indigo-600 hover:text-white text-indigo-700 font-label-sm text-label-sm px-space-sm py-1 rounded-full whitespace-nowrap shadow-sm border border-white hover:border-transparent" data-query="Speak with Human Lead">
-              Speak with Human Lead
-            </button>
-          </div>
-          <!-- Bottom Input Dock -->
-          <div class="p-space-lg bg-white/50 backdrop-blur-md border-t border-white/70">
-            <form id="chat-form" class="aurora-input-pill flex items-center gap-space-xs bg-white/85 backdrop-blur-md rounded-full px-2 py-1.5 border border-white shadow-[0_10px_25px_-5px_rgba(0,0,0,0.08),0_4px_15px_rgba(0,0,0,0.04)] focus-within:ring-2 focus-within:ring-indigo-400">
-              <div class="relative flex-1">
-                <input autocomplete="off" class="w-full bg-transparent rounded-full pl-4 pr-2 py-2 font-body-md text-body-md text-slate-800 placeholder:text-slate-400 focus:outline-none" id="chat-input" placeholder="Ask about orders, returns, warranty, resQ plans..." type="text"/>
-              </div>
-              <button id="send-btn" class="aurora-send-btn w-10 h-10 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white flex items-center justify-center shadow-md shrink-0 mr-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none" title="Send message" type="submit" disabled>
-                <span class="material-symbols-outlined text-[20px]">send</span>
-              </button>
-            </form>
-            <div class="flex items-center justify-between text-slate-500 font-label-sm text-label-sm mt-space-sm px-space-xs">
-              <span class="">Protected by Reliance Retail Secured Guarantee</span>
-              <span class="hidden sm:inline">Press Enter to send</span>
-            </div>
-          </div>
-        </section>
-        <!-- Technical Service Capabilities Sub-Panel -->
-        <section class="mt-space-xl grid grid-cols-1 md:grid-cols-3 gap-space-md">
-          <div class="aurora-feature-card p-space-lg rounded-2xl shadow-sm flex items-start gap-space-md backdrop-blur-xl">
-            <div class="w-10 h-10 rounded-2xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 shrink-0 shadow-sm">
-              <span class="material-symbols-outlined text-[22px]">verified</span>
-            </div>
-            <div>
-              <h3 class="font-headline-sm text-headline-sm text-slate-900 font-bold">resQ Authorized Engineers</h3>
-              <p class="font-body-sm text-body-sm text-slate-600 mt-0.5 leading-relaxed">ISO 9001:2015 certified customer engineers for doorstep hardware installation.</p>
-            </div>
-          </div>
-          <div class="aurora-feature-card p-space-lg rounded-2xl shadow-sm flex items-start gap-space-md backdrop-blur-xl">
-            <div class="w-10 h-10 rounded-2xl bg-cyan-50 border border-cyan-100 flex items-center justify-center text-cyan-600 shrink-0 shadow-sm">
-              <span class="material-symbols-outlined text-[22px]">schedule</span>
-            </div>
-            <div>
-              <h3 class="font-headline-sm text-headline-sm text-slate-900 font-bold">Live Status Synchronization</h3>
-              <p class="font-body-sm text-body-sm text-slate-600 mt-0.5 leading-relaxed">Real-time GPS telematics linked with 550+ Reliance Digital physical service hubs.</p>
-            </div>
-          </div>
-          <div class="aurora-feature-card p-space-lg rounded-2xl shadow-sm flex items-start gap-space-md backdrop-blur-xl">
-            <div class="w-10 h-10 rounded-2xl bg-purple-50 border border-purple-100 flex items-center justify-center text-purple-600 shrink-0 shadow-sm">
-              <span class="material-symbols-outlined text-[22px]">security</span>
-            </div>
-            <div>
-              <h3 class="font-headline-sm text-headline-sm text-slate-900 font-bold">100% Genuine Parts</h3>
-              <p class="font-body-sm text-body-sm text-slate-600 mt-0.5 leading-relaxed">Direct OEM brand inventory backed with digital proof-of-work receipts.</p>
-            </div>
-          </div>
-        </section>
+
+  <main class="w-full pt-16">
+    <section class="w-full bg-surface-panel border-b border-border-crisp py-8">
+      <div class="max-w-3xl mx-auto px-4 text-center sm:text-left">
+        <div
+          class="inline-flex items-center px-2 py-0.5 bg-primary-fixed text-primary text-xs font-semibold rounded uppercase tracking-wider mb-2">
+          Customer Care
+        </div>
+        <h1 class="text-2xl font-semibold text-on-surface tracking-tight">Reliance Digital Customer Support</h1>
+        <p class="text-secondary mt-1">Instant assistance for orders, returns, warranty, and delivery.</p>
       </div>
+    </section>
+
+    <div class="max-w-3xl mx-auto px-4 py-8">
+      <section
+        class="w-full bg-surface-panel rounded-xl border border-border-crisp shadow-sm overflow-hidden flex flex-col">
+
+        <!-- Chat Header -->
+        <div class="p-4 border-b border-border-crisp flex items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <div class="relative">
+              <div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-sm">
+                <span class="material-symbols-outlined text-[20px]">headset_mic</span>
+              </div>
+              <span
+                class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-status-success border-2 border-surface-panel"></span>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="font-semibold text-on-surface">resQ Support Assistant</span>
+              </div>
+              <p class="text-xs text-secondary mt-0.5">24x7 Digital Customer Care</p>
+            </div>
+          </div>
+          <button id="clear-btn"
+            class="p-2 text-secondary hover:text-primary hover:bg-surface-subtle border border-border-crisp rounded transition-colors flex items-center gap-1 text-sm"
+            title="Clear conversation">
+            <span class="material-symbols-outlined text-[18px]">restart_alt</span>
+            <span class="hidden sm:inline">Clear</span>
+          </button>
+        </div>
+
+        <!-- Chat Stream -->
+        <div class="p-4 md:p-6 flex flex-col gap-4 max-h-[560px] min-h-[420px] overflow-y-auto bg-surface-panel"
+          id="chat-messages-container">
+          <div class="flex items-center justify-center my-1">
+            <span class="px-3 py-1 bg-surface-subtle text-secondary text-xs rounded-full border border-border-crisp">
+              Today &bull; Connected to resQ Support Assistant
+            </span>
+          </div>
+
+          <!-- Empty State -->
+          <div class="flex flex-col gap-3 py-2" id="empty-state">
+            <div class="bg-surface-subtle border border-border-crisp p-5 rounded-xl">
+              <p class="text-on-surface font-medium">Hello! How can I help you today?</p>
+              <p class="text-secondary text-sm mt-1">Choose a topic below or type your question about orders, returns,
+                warranty, or delivery.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <button
+                class="suggestion-card text-left bg-surface-panel border border-border-crisp hover:border-primary rounded-lg p-3 flex items-start gap-3 transition-colors group"
+                type="button" data-query="How can I return a product?">
+                <span
+                  class="material-symbols-outlined text-primary text-[20px] p-1.5 bg-primary-fixed rounded shrink-0">assignment_return</span>
+                <div>
+                  <span class="block font-medium text-on-surface group-hover:text-primary text-sm">Returns &amp;
+                    Exchange</span>
+                  <span class="block text-secondary text-xs">Return policy &amp; process</span>
+                </div>
+              </button>
+              <button
+                class="suggestion-card text-left bg-surface-panel border border-border-crisp hover:border-primary rounded-lg p-3 flex items-start gap-3 transition-colors group"
+                type="button" data-query="What is your warranty policy?">
+                <span
+                  class="material-symbols-outlined text-primary text-[20px] p-1.5 bg-primary-fixed rounded shrink-0">verified_user</span>
+                <div>
+                  <span class="block font-medium text-on-surface group-hover:text-primary text-sm">Warranty &amp;
+                    Care</span>
+                  <span class="block text-secondary text-xs">Coverage &amp; claims</span>
+                </div>
+              </button>
+              <button
+                class="suggestion-card text-left bg-surface-panel border border-border-crisp hover:border-primary rounded-lg p-3 flex items-start gap-3 transition-colors group"
+                type="button" data-query="What's the status of my order?">
+                <span
+                  class="material-symbols-outlined text-primary text-[20px] p-1.5 bg-primary-fixed rounded shrink-0">inventory_2</span>
+                <div>
+                  <span class="block font-medium text-on-surface group-hover:text-primary text-sm">Order Status</span>
+                  <span class="block text-secondary text-xs">Track your order</span>
+                </div>
+              </button>
+              <button
+                class="suggestion-card text-left bg-surface-panel border border-border-crisp hover:border-primary rounded-lg p-3 flex items-start gap-3 transition-colors group"
+                type="button" data-query="How long does delivery take?">
+                <span
+                  class="material-symbols-outlined text-primary text-[20px] p-1.5 bg-primary-fixed rounded shrink-0">local_shipping</span>
+                <div>
+                  <span class="block font-medium text-on-surface group-hover:text-primary text-sm">Delivery</span>
+                  <span class="block text-secondary text-xs">Timelines &amp; tracking</span>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Typing Indicator -->
+          <div class="flex items-start gap-3 max-w-[80%] hidden" id="loading-indicator">
+            <div
+              class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0 shadow-sm">
+              <span class="material-symbols-outlined text-[18px]">support_agent</span>
+            </div>
+            <div class="flex flex-col gap-1">
+              <div
+                class="bg-surface-subtle border border-border-crisp p-3 rounded-xl rounded-bl-sm shadow-sm flex items-center gap-1.5 w-20 justify-center h-10">
+                <span class="w-2 h-2 rounded-full bg-secondary animate-bounce"></span>
+                <span class="w-2 h-2 rounded-full bg-secondary animate-bounce" style="animation-delay: 0.15s;"></span>
+                <span class="w-2 h-2 rounded-full bg-secondary animate-bounce" style="animation-delay: 0.3s;"></span>
+              </div>
+              <span class="text-xs text-secondary ml-1">Agent is thinking...</span>
+            </div>
+          </div>
+
+          <!-- Error State -->
+          <div class="w-full hidden" id="error-state">
+            <div
+              class="bg-red-50 border border-red-200 text-red-900 p-4 rounded-xl shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-primary text-[24px]">error_outline</span>
+                <div>
+                  <span class="font-semibold text-on-surface block text-sm">Unable to retrieve response</span>
+                  <span class="text-secondary text-sm" id="error-desc">Our service experienced a temporary issue. Please
+                    try again.</span>
+                </div>
+              </div>
+              <button
+                class="bg-primary text-white px-4 py-1.5 rounded-full text-sm font-semibold hover:bg-primary-container transition-colors flex items-center gap-1 shrink-0"
+                id="retry-btn" type="button">
+                <span class="material-symbols-outlined text-[18px]">cached</span>
+                <span>Try again</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick tags -->
+        <div class="px-4 py-3 overflow-x-auto flex items-center gap-2 border-t border-border-crisp bg-surface-panel">
+          <span class="text-xs text-secondary uppercase font-semibold shrink-0">Quick tags:</span>
+          <button
+            class="suggestion-card quick-tag bg-surface-panel border border-border-crisp hover:border-primary hover:text-primary text-secondary text-xs px-3 py-1 rounded-full whitespace-nowrap transition-colors"
+            data-query="Where is my delivery?">
+            Where is my delivery?
+          </button>
+          <button
+            class="suggestion-card quick-tag bg-surface-panel border border-border-crisp hover:border-primary hover:text-primary text-secondary text-xs px-3 py-1 rounded-full whitespace-nowrap transition-colors"
+            data-query="Download tax invoice">
+            Download tax invoice
+          </button>
+          <button
+            class="suggestion-card quick-tag bg-surface-panel border border-border-crisp hover:border-primary hover:text-primary text-secondary text-xs px-3 py-1 rounded-full whitespace-nowrap transition-colors"
+            data-query="What is your cancellation policy?">
+            Cancellation policy
+          </button>
+          <button
+            class="suggestion-card quick-tag bg-surface-panel border border-border-crisp hover:border-primary hover:text-primary text-secondary text-xs px-3 py-1 rounded-full whitespace-nowrap transition-colors"
+            data-query="I want to talk to a human agent.">
+            Speak to a human agent
+          </button>
+        </div>
+
+        <!-- Input Dock -->
+        <div class="p-4 bg-surface-panel border-t border-border-crisp">
+          <form id="chat-form"
+            class="flex items-center gap-2 bg-surface-subtle border border-border-crisp rounded-xl p-1.5 focus-within:border-primary focus-within:bg-white transition-all">
+            <input autocomplete="off"
+              class="flex-1 bg-transparent px-3 py-2 text-sm text-on-surface placeholder:text-secondary outline-none"
+              id="chat-input" placeholder="Type your message..." type="text" />
+            <button id="send-btn"
+              class="px-4 py-2.5 bg-primary hover:bg-primary-container text-white rounded-lg text-sm font-semibold transition-colors flex items-center gap-1.5 shadow-sm shrink-0 disabled:opacity-50 disabled:cursor-not-allowed"
+              title="Send message" type="submit" disabled>
+              <span>Send</span>
+              <span class="material-symbols-outlined text-[16px]">send</span>
+            </button>
+          </form>
+          <div class="flex items-center justify-center gap-1 mt-2 text-xs text-secondary">
+            <span class="material-symbols-outlined text-[14px] text-status-success">lock</span>
+            <span>Secure support session</span>
+          </div>
+        </div>
+      </section>
     </div>
   </main>
-  <footer class="w-full glass-header py-space-lg mt-8">
-    <div class="max-w-3xl mx-auto px-gutter flex flex-col sm:flex-row items-center justify-between gap-space-xs text-slate-500 font-body-sm text-body-sm">
-      <span class="">© 2026 Reliance Retail Ltd. Authorized resQ Service &amp; Support.</span>
-      <div class="flex items-center gap-space-md">
-        <span class="flex items-center gap-space-xs">
-          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>All systems operational
-        </span>
-      </div>
+
+  <footer class="w-full bg-surface-panel border-t border-border-crisp py-5">
+    <div
+      class="max-w-3xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-secondary text-xs">
+      <span>&copy; 2026 Reliance Retail Ltd. Authorized resQ Service &amp; Support.</span>
+      <span class="flex items-center gap-1">
+        <span class="w-2 h-2 rounded-full bg-status-success"></span>All systems operational
+      </span>
     </div>
   </footer>
-  <script src="app.js"></script>
+
+  <script src="app.js?v=2"></script>
 </body>
+
 </html>
