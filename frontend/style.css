@@ -1,129 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
-
-@layer base {
-  html, body { margin: 0; padding: 0; }
-  body { overscroll-behavior: none; }
-  main > :first-child { margin-top: 0 !important; }
-  main > :last-child { margin-bottom: 0 !important; }
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 
-::-webkit-scrollbar { display: none; }
-
-.glass-panel {
-  background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.75);
-}
-.glass-card {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.85);
-}
-.glass-header {
-  background: rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.45);
-}
-.aurora-bg {
-  background: radial-gradient(circle at 10% 20%, rgba(112, 225, 245, 0.4) 0%, transparent 40%),
-              radial-gradient(circle at 90% 15%, rgba(184, 164, 248, 0.45) 0%, transparent 45%),
-              radial-gradient(circle at 50% 50%, rgba(251, 194, 235, 0.35) 0%, transparent 50%),
-              radial-gradient(circle at 80% 85%, rgba(74, 144, 226, 0.35) 0%, transparent 50%),
-              radial-gradient(circle at 20% 80%, rgba(197, 192, 255, 0.4) 0%, transparent 45%),
-              linear-gradient(135deg, #e0f2fe 0%, #ede9fe 45%, #fce7f3 100%);
+body {
+  overscroll-behavior: none;
 }
 
-/* Aurora Glow & Interactive Hover Styles */
-.aurora-chat-shell {
-  box-shadow: 0 20px 45px -15px rgba(30, 41, 59, 0.08), 0 0 35px -5px rgba(184, 164, 248, 0.28), 0 0 15px 0 rgba(112, 225, 245, 0.18);
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  transition: box-shadow 0.4s ease, border-color 0.4s ease;
-}
-.aurora-chat-shell:hover {
-  box-shadow: 0 24px 50px -12px rgba(30, 41, 59, 0.1), 0 0 45px 0 rgba(184, 164, 248, 0.38), 0 0 25px 2px rgba(112, 225, 245, 0.25);
-  border-color: rgba(255, 255, 255, 0.95);
+::-webkit-scrollbar {
+  display: none;
 }
 
-.aurora-feature-card {
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  background: rgba(255, 255, 255, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.75);
-}
-.aurora-feature-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -120%;
-  width: 80%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
-  transform: skewX(-20deg);
-  transition: left 0.75s ease;
-  pointer-events: none;
-}
-.aurora-feature-card:hover {
-  transform: translateY(-5px) scale(1.01);
-  background: rgba(255, 255, 255, 0.85);
-  border-color: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 16px 36px -6px rgba(99, 102, 241, 0.22), 0 8px 18px -4px rgba(56, 189, 248, 0.25), 0 0 20px 2px rgba(255, 255, 255, 0.45);
-}
-.aurora-feature-card:hover::before {
-  left: 140%;
-}
-
-.interactive-order-card {
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.interactive-order-card:hover {
-  transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 10px 25px -4px rgba(56, 189, 248, 0.25), 0 0 16px -2px rgba(99, 102, 241, 0.2);
-  border-color: rgba(255, 255, 255, 0.95);
-}
-
-.interactive-chip {
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.interactive-chip:hover {
-  transform: translateY(-1.5px);
-  box-shadow: 0 6px 16px -2px rgba(99, 102, 241, 0.25), 0 0 10px rgba(56, 189, 248, 0.2);
-}
-
-.aurora-input-pill {
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.aurora-input-pill:focus-within,
-.aurora-input-pill:hover {
-  border-color: rgba(255, 255, 255, 1);
-  box-shadow: 0 12px 30px -4px rgba(99, 102, 241, 0.16), 0 0 20px 2px rgba(56, 189, 248, 0.22);
-}
-
-.aurora-send-btn {
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.aurora-send-btn:hover:not(:disabled) {
-  transform: scale(1.06);
-  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.45), 0 0 15px rgba(56, 189, 248, 0.35);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .aurora-feature-card,
-  .interactive-order-card,
-  .interactive-chip,
-  .aurora-input-pill,
-  .aurora-send-btn,
-  .aurora-chat-shell {
-    transition: none !important;
-    transform: none !important;
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
   }
-  .aurora-feature-card::before {
-    display: none;
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.25s ease-out;
 }
