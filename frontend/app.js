@@ -91,28 +91,28 @@ document.addEventListener('DOMContentLoaded', () => {
     let html;
     if (role === 'user') {
       html = `
-        <div class="msg-user flex items-end justify-end gap-space-sm self-end max-w-[85%] animate-fade-in">
+        <div class="msg-user flex items-end justify-end gap-2 self-end max-w-[85%] animate-fade-in">
           <div class="flex flex-col items-end gap-1">
-            <div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-space-md rounded-2xl rounded-br-sm shadow-[0_4px_14px_rgba(79,70,229,0.3)]">
-              <p class="font-body-md text-body-md text-white whitespace-pre-wrap">${escapeHtml(text)}</p>
+            <div class="bg-primary text-white p-3 rounded-xl rounded-br-sm shadow-sm">
+              <p class="text-sm text-white whitespace-pre-wrap">${escapeHtml(text)}</p>
             </div>
             <div class="flex items-center gap-1 mr-1">
-              <span class="font-label-sm text-label-sm text-slate-500">${time}</span>
-              <span class="material-symbols-outlined text-indigo-500 text-[14px]">done_all</span>
+              <span class="text-xs text-secondary">${time}</span>
+              <span class="material-symbols-outlined text-status-success text-[14px]">done_all</span>
             </div>
           </div>
         </div>`;
     } else {
       html = `
-        <div class="msg-agent flex items-start gap-space-sm max-w-[90%] animate-fade-in">
-          <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex items-center justify-center shrink-0 shadow-sm">
+        <div class="msg-agent flex items-start gap-2 max-w-[90%] animate-fade-in">
+          <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center shrink-0 shadow-sm">
             <span class="material-symbols-outlined text-[18px]">support_agent</span>
           </div>
           <div class="flex flex-col gap-1 w-full">
-            <div class="glass-card text-slate-800 p-space-md rounded-2xl rounded-bl-sm shadow-sm flex flex-col gap-space-md">
-              <p class="font-body-md text-body-md leading-relaxed whitespace-pre-wrap">${escapeHtml(text)}</p>
+            <div class="bg-surface-subtle border border-border-crisp text-on-surface p-3 rounded-xl rounded-bl-sm shadow-sm flex flex-col gap-3">
+              <p class="text-sm leading-relaxed whitespace-pre-wrap">${escapeHtml(text)}</p>
             </div>
-            <span class="font-label-sm text-label-sm text-slate-500 ml-1">${time} &bull; resQ Virtual Specialist</span>
+            <span class="text-xs text-secondary ml-1">${time} &bull; resQ Support Assistant</span>
           </div>
         </div>`;
     }
